@@ -51,11 +51,32 @@ def save_inventory():
         json.dump(inventory, f)
     print("Inventory saved successfully to inventory.json.")
 
+def update_product():
+    print("Update Stock")
+    product_id = input("Enter Product ID: ").strip()
+    new_quantity = int(input("Enter New Stock Quantity: "))
+
+    for item in inventory:
+        if item["ID"].upper() == product_id.upper():
+            print("\nProduct Found:")
+            print(f"Name: {item["Name"]}")
+            print(f"Current Stock: {item["Stock"]}")
+            print("")
+
+            item["Stock"] = new_quantity
+            print(f"\nNew Stock Quantity: {new_quantity}")
+            print("\nStock updated successfully! ")
+            return
+        else:
+            print("Product Not Found")
+
 
 def exit():
     save_inventory()
     print("""Thank you for using Inventory Management System. 
              Program terminated.""")
+
+
 
 
 print("""
