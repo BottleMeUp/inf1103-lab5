@@ -1,0 +1,86 @@
+import json
+import os
+
+inventory = [
+    {"ID": "P001", "Name": "Laptop", "Price": "$1200.00", "Stock": 15},
+    {"ID": "P002", "Name": "Mouse", "Price": "$25.50", "Stock": 40},
+    {"ID": "P003", "Name": "Keyboard", "Price": "$45.50", "Stock": 25}
+]
+
+def add_product():
+    print("Add New Product")
+    product_id = input("Enter Product ID: ").strip()
+    product_name = input("Enter Product Name: ").strip()
+    price = input("Enter Price: ").strip()
+    stock_qty = int(input("Enter Stock Quantity: "))
+
+    new_item = {
+        "ID": product_id,
+        "Name": product_name,
+        "Price": price,
+        "Stock": stock_qty
+    }
+
+    inventory.append(new_item)
+    print("Product added successfully!")
+
+    return
+
+
+
+def display_all():
+    print("Current Inventory\n")
+    print("------------------------------------------------ ")
+    for item in inventory:
+        print(f"ID: {item['ID']} | Name: {item['Name']} | Price: {item['Price']} | Stock: {item['Stock']}")
+    print("------------------------------------------------ ")
+             
+
+
+print("""
+----------- MENU ----------- 
+1. Display All Products 
+2. Add Product 
+3. Update Stock 
+4. Search Product 
+5. Save Inventory 
+6. Exit 
+---------------------------- 
+""")
+
+
+while True:
+    try:
+        options = int(input("Enter option (1-6): "))
+    except ValueError:
+        print("Please enter a number from 1 to 6.")
+        continue
+
+    match options:
+        case 1:
+            display_all()
+        case 2:
+            add_product()
+        # case 3:
+        #     update_product()
+        # case 4:
+        #     search_product()
+        # case 5:
+        #     save_inventory()
+        # case 6: 
+        #     exit()
+        #     break
+        case _:
+            print("Invalid choice, please try again.")
+
+    
+
+            
+
+
+
+
+
+
+
+    
