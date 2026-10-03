@@ -71,6 +71,25 @@ def update_product():
             print("Product Not Found")
 
 
+def search_product():
+    print("Search Product")
+    product_id = input("Enter Product ID: ").strip()
+
+    for item in inventory:
+        if item["ID"].upper() == product_id.upper():
+            print(f"""
+Product Found 
+------------------------------------------------ 
+ID: {item["ID"]} 
+Name: {item["Name"]}
+Price: {item["Price"]}
+Stock: {item["Stock"]} 
+------------------------------------------------
+            """)
+            return
+        else:
+            print("Product not found.")
+
 def exit():
     save_inventory()
     print("""Thank you for using Inventory Management System. 
