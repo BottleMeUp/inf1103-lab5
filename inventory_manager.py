@@ -123,10 +123,10 @@ while True:
             display_all()
         case 2:
             add_product()
-        # case 3:
-        #     update_product()
-        # case 4:
-        #     search_product()
+        case 3:
+            update_product()
+        case 4:
+            search_product()
         case 5:
             save_inventory()
         case 6: 
