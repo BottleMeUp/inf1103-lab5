@@ -45,6 +45,18 @@ def load_inventory():
         return []
 
 
+def save_inventory():
+    print("Saving inventory... ")
+    with open("inventory.json", "w") as f:
+        json.dump(inventory, f)
+    print("Inventory saved successfully to inventory.json.")
+
+
+def exit():
+    save_inventory()
+    print("""Thank you for using Inventory Management System. 
+             Program terminated.""")
+
 
 print("""
 ----------- MENU ----------- 
@@ -75,11 +87,11 @@ while True:
         #     update_product()
         # case 4:
         #     search_product()
-        # case 5:
-        #     save_inventory()
-        # case 6: 
-        #     exit()
-        #     break
+        case 5:
+            save_inventory()
+        case 6: 
+            exit()
+            break
         case _:
             print("Invalid choice, please try again.")
 
