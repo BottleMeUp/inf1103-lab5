@@ -26,15 +26,24 @@ def add_product():
 
     return
 
-
-
 def display_all():
     print("Current Inventory\n")
     print("------------------------------------------------ ")
     for item in inventory:
         print(f"ID: {item['ID']} | Name: {item['Name']} | Price: {item['Price']} | Stock: {item['Stock']}")
     print("------------------------------------------------ ")
+
              
+def load_inventory():
+    if not os.path.exists("inventory.json"):
+        return []
+    try:
+        with open("inventory.json", "r") as f:
+            return json.load(f)
+    except json.JSONDecodeError:
+        print("Warning: inventory.json is empty or invalid. Starting with empty inventory.")
+        return []
+
 
 
 print("""
@@ -48,6 +57,7 @@ print("""
 ---------------------------- 
 """)
 
+inventory = load_inventory()
 
 while True:
     try:
