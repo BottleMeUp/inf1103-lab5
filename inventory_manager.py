@@ -1,5 +1,6 @@
 import json
 import os
+FILENAME = "inventory.json"
 
 inventory = [
     {"ID": "P001", "Name": "Laptop", "Price": "$1200.00", "Stock": 15},
@@ -35,10 +36,10 @@ def display_all():
 
              
 def load_inventory():
-    if not os.path.exists("inventory.json"):
+    if not os.path.exists(FILENAME):
         return []
     try:
-        with open("inventory.json", "r") as f:
+        with open(FILENAME, "r") as f:
             return json.load(f)
     except json.JSONDecodeError:
         print("Warning: inventory.json is empty or invalid. Starting with empty inventory.")
@@ -47,7 +48,7 @@ def load_inventory():
 
 def save_inventory():
     print("Saving inventory... ")
-    with open("inventory.json", "w") as f:
+    with open(FILENAME, "w") as f:
         json.dump(inventory, f)
     print("Inventory saved successfully to inventory.json.")
 
